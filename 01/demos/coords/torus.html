@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<script src="suica.js"></script>
+</head>
+
+<body>
+	<suica fullWindow color="white">
+		<orbit>
+	</suica>
+	
+	<script>
+		var pic = drawing( 64, 64 );
+		pic.context.globalAlpha = 0.3;
+		moveTo( 0, 0 );
+			lineTo( 64, 0 );
+			lineTo( 64, 64 );
+			lineTo( 0, 64 );
+			lineTo( 0, 0 );
+		fill( 'white' );
+
+		pic.context.globalAlpha = 1;
+		moveTo( 32, 0 );
+		lineTo( 32, 64 );
+		moveTo( 0, 32 );
+		lineTo( 64, 32 );
+		stroke( 'black', 2 );	
+		
+		R = 25;
+		r = 10;
+		
+		function torus(u)
+		{
+			u = 2*Math.PI*u;
+			return [
+				0,
+				R*Math.sin(u),
+				R*Math.cos(u)
+			];
+		}
+		
+		tube( [0,0,0], torus, r, [120,50], 1, 'LightSteelBlue' );
+		its.spinH = 90;
+		its.spinS = 90;
+		its.image = pic;
+		its.images = [50,15];
+		its.threejs.material.depthTest = false;
+	</script>
+</body>
