@@ -26,34 +26,10 @@
 		moveTo( 0, 32 );
 		lineTo( 64, 32 );
 		stroke( 'black', 2 );	
-
-		
 	
 		tube( [0,0,0], [[0,25,0,0.01], [0,-15,0,30]], 1, [1,120], 1, 'LightSteelBlue' );
-
-
-//		cone( [0,-15,0], [60,40], 'LightSteelBlue' );
 		its.image = pic;
 		its.images = [10,20];
 		its.spinH = 12;
-/*		its.threejs.material.transparent = true;
-		its.threejs.material.opacity = 0.8;
-		its.threejs.material.polygonOffset = true;
-		its.threejs.material.polygonOffsetUnits = 2;
-		its.threejs.material.polygonOffsetFactor = 2;
-*/		
-		/*
-		for( var y=-15; y<=25; y+=5 )
-		{
-			circle( [0,y,0],  (25-y)/40*60, 'black' );
-			its.wireframe = true;
-			its.spinV = 90;
-		}
-		
-		for( var a=0; a<360; a+=15 )
-		{
-			line( [0,25,0], [30*Math.sin(radians(a)),-15,30*Math.cos(radians(a))],  'black' );
-		}
-		*/
 	</script>
 </body>
