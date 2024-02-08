@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+
+<!-- map.js: map with labels -->
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<script src="js/three.min.js"></script>
+	<script src="js/OrbitControls.js"></script>
+	<link rel="stylesheet" href="example.css">
+</head>
+
+<body>
+	<script type="module">
+	
+		import {Map} from './map.js';
+		import {scene} from './example.js';
+
+
+		new Map( './map.xml', drawMap );
+
+		var regNumber = { 
+			BL: 4, BU: 6, DO: 3, GA: 2, HA: 5, KA: 5, KY: 4, LO: 1, MO: 1, PA: 5, PE: 4, PL: 5, PN: 1, RA: 2, RU: 2, SF: 4, SH: 3, SI: 3, SL: 6, SM: 5, SO: 4, ST: 6, TA: 2, VA: 3, VE: 2, VI: 1, VR: 1, YA: 6 };
+
+		var colors = ['',
+			'hsl(30,90%,75%)','hsl(30, 70%,54%)','hsl(30,60%,42%)',
+			'hsl(30,90%,75%)','hsl(30, 70%,54%)','hsl(30,60%,42%)',
+		];
+		
+		
+		function drawMap( map )
+		{
+			var label1 = map.label2D( 'VR', 1, 0, 'black', 3 ),
+				label2 = map.label2D( 'TA', 3, 0, 'black', 3 ),
+				label3 = map.label2D( 'VA', 5, 0, 'black', 3 ),
+				label4 = map.label2D( 'KY', 2, 0, 'black', 3 ),
+				label5 = map.label2D( 'PL', 4, 0, 'black', 3 ),
+				label6 = map.label2D( 'SL', 6, 0, 'black', 3 );
+				
+			label2.position.x -= 3;
+			label2.position.z -= 1;
+				
+			label3.position.x -= 1;
+			label3.position.z -= 2;
+				
+			label4.position.x += 3;
+			label4.position.z -= 1;
+				
+			label5.position.x += 1.5;
+			label5.position.z += 1.5;
+				
+			label6.position.x += 2;
+			label6.position.z += 0.5;
+				
+			scene.add( label1, label2, label3, label4, label5, label6 );
+			
+				
+			for( var regionName in map.regions ) if( regionName!='BG' )
+			{
+				var color = new THREE.Color( colors[regNumber[regionName]] );
+					
+				scene.add(
+					map.region3D( regionName, 0, color ),
+					map.region2D( regionName, 0, 'white' ),
+				);
+			}
+			
+			scene.add( map.region2D( 'BG', 0.01, 'black' ) );
+		}
+		 
+		 
+	</script>
+</body>
+</html>
+
+
