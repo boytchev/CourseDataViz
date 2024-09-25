@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+
+<!-- map.js: map with labels -->
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<script src="js/three.min.js"></script>
+	<script src="js/OrbitControls.js"></script>
+	<link rel="stylesheet" href="example.css">
+</head>
+
+<body>
+	<script type="module">
+	
+		import {Map} from './map.js';
+		import {scene} from './example.js';
+
+
+		new Map( './map.xml', drawMap );
+
+		var fullNames = { BG: 'България', BL: 'Благоевград', BU: 'Бургас', DO: 'Добрич', GA: 'Габрово', HA: 'Хасково', KA: 'Кърджали', KY: 'Кюстендил', LO: 'Ловеч', MO: 'Монтана', PA: 'Пазарджик', PE: 'Перник', PL: 'Пловдив', PN: 'Плевен', RA: 'Разград', RU: 'Русе', SF: 'София', SH: 'Шумен', SI: 'Силистра', SL: 'Сливен', SM: 'Смолян', SO: 'София обл.', ST: 'Ст. Загора', TA: 'Търговище', VA: 'Варна', VE: 'В. Търново', VI: 'Видин', VR: 'Враца', YA: 'Ямбол' };
+		
+		var values = { BG: 0, BL: 5368, BU: 6659, DO: 2642, GA: 1608, HA: 3939, KA: 2189, KY: 2018, LO: 1806, MO: 1357, PA: 4127, PE: 1398, PL: 10303, PN: 2823, RA: 1215, RU: 3007, SF: 22422, SH: 2069, SI: 1609, SL: 2102, SM: 1467, SO: 3559, ST: 4879, TA: 1101, VA: 6750, VE: 3189, VI: 1196, VR: 1994, YA: 1894 };
+		var values2 = { BG: 0, BL: 73.6, BU: 67.8, DO: 71.9, GA: 84.6, HA: 71.1, KA: 77.7, KY: 70.5, LO: 80.2, MO: 74.0, PA: 77.8, PE: 73.0, PL: 76.9, PN: 78.8, RA: 68.2, RU: 78.0, SF: 80.0, SH: 81.3, SI: 67.3, SL: 68.2, SM: 79.3, SO: 71.6, ST: 73.9, TA: 78.6, VA: 76.9, VE: 77.5, VI: 72.7, VR: 76.7, YA: 68.5 };
+
+		function drawMap( map )
+		{
+			// country name
+			//scene.add( map.label2D( 'BG', fullNames['BG'], 0, 'black', 2.5 ) );
+
+			var max = 0,
+				min = 1E10;
+				
+			for( var regionName in map.regions ) if( regionName!='BG' )
+			{
+				max = Math.max( max, Math.log(values[regionName]) );
+				min = Math.min( min, Math.log(values[regionName]) );
+			}
+			
+			var max2 = 0,
+				min2 = 1E10;
+				
+			for( var regionName in map.regions ) if( regionName!='BG' )
+			{
+				max2 = Math.max( max2, Math.log(values2[regionName]) );
+				min2 = Math.min( min2, Math.log(values2[regionName]) );
+			}
+			
+			var dot = new THREE.Mesh(
+					new THREE.CircleGeometry( 1, 32 ).rotateX( -Math.PI/2 ),
+					new THREE.MeshBasicMaterial( {color: 'crimson'} )
+			);
+			
+			for( var regionName in map.regions ) if( regionName!='BG' )
+			{
+				var value2 = 0.3+1.5*((((Math.log(values2[regionName])-min2) / (max2-min2)))),
+					value = 1 - ((((Math.log(values[regionName])-min) / (max-min)))**2),
+					color = new THREE.Color().setHSL(0.7,0,0.4+0.5*value );
+					
+					dot = dot.clone();
+					dot.position.copy( map.center( regionName, 0.1 ) );
+					dot.scale.set( value2, value2, value2 );
+					dot.renderOrder = -10;
+					
+					
+					scene.add(
+						dot,
+						// province shape
+						map.region3D( regionName, 0, color ),
+						map.region2D( regionName, 0, 'black' ),
+					);
+					scene.add(
+						map.label2D( regionName, fullNames[regionName], 0, 'black', 0.7, 1+value2 ),
+					);
+			}
+			scene.add( map.region2D( 'BG', 0.01, 'black' ) );
+
+		}
+		 
+		 
+	</script>
+</body>
+</html>
+
+

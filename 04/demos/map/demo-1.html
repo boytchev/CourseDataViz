@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+
+<!-- map.js: map with labels -->
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<script src="js/three.min.js"></script>
+	<script src="js/OrbitControls.js"></script>
+	<link rel="stylesheet" href="example.css">
+</head>
+
+<body>
+	<script type="module">
+	
+		import {Map} from './map.js';
+		import {scene} from './example.js';
+
+
+		new Map( './map.xml', drawMap );
+
+		var fullNames = { BG: 'България', BL: 'Благоевград', BU: 'Бургас', DO: 'Добрич', GA: 'Габрово', HA: 'Хасково', KA: 'Кърджали', KY: 'Кюстендил', LO: 'Ловеч', MO: 'Монтана', PA: 'Пазарджик', PE: 'Перник', PL: 'Пловдив', PN: 'Плевен', RA: 'Разград', RU: 'Русе', SF: 'София', SH: 'Шумен', SI: 'Силистра', SL: 'Сливен', SM: 'Смолян', SO: 'София обл.', ST: 'Ст. Загора', TA: 'Търговище', VA: 'Варна', VE: 'В. Търново', VI: 'Видин', VR: 'Враца', YA: 'Ямбол' };
+		
+		var values = { BG: 0, BL: 0.00414061671235033, BU: 0.003599922, DO: 0.00176494878318437, GA: 0.00227672355087562, HA: 0.00171105806726065, KA: 0.00453331633339708, KY: 0.000957614376745185, LO: 0.00493152568001787, MO: 0.00229262192580242, PA: 0.0025846989304394, PE: 0.000928505106778087, PL: 0.0019227829288397, PN: 0.00270210507695029, RA: 0.00355540916268661, RU: 0.00185029175689854, SF: 0.00203407387643315, SH: 0.00279932657709702, SI: 0.00165694998465787, SL: 0.00176617059470728, SM: 0.00245108221511362, SO: 0.000952631374763459, ST: 0.00275204295345472, TA: 0.0047481252037822, VA: 0.00275799517813595, VE: 0.00288372048164883, VI: 0.000782410354339062, VR: 0.00170142592580474, YA: 0.0012124748160776 };
+
+		function drawMap( map )
+		{
+			// country name
+			//scene.add( map.label2D( 'BG', fullNames['BG'], 0, 'black', 2.5 ) );
+
+			var max = 0,
+				min = 1E10;
+				
+			for( var regionName in map.regions ) if( regionName!='BG' )
+			{
+				max = Math.max( max, values[regionName] );
+				min = Math.min( min, values[regionName] );
+			}
+				
+			
+			var vals = Object.values(values);
+			for( var regionName in map.regions ) if( regionName!='BG' )
+			{
+				var value = (values[regionName]-min) / (max-min);
+				
+				var	color = new THREE.Color().setHSL(0.2-value/5,1,0.8-0.6*value );
+					
+				scene.add(
+					// province shape
+					map.region3D( regionName, 0, color ),
+					map.region2D( regionName, 0, 'black' ),
+					// province name
+					map.label2D( regionName, fullNames[regionName], 0, 'black', 0.8 ),
+					// province percentage
+					//map.label2D( regionName, values[regionName], 0, 'black', 0.7, 1.2 )
+				);
+			}
+			scene.add( map.region2D( 'BG', 0.01, 'black' ) );
+		}
+		 
+		 
+	</script>
+</body>
+</html>
+
+
