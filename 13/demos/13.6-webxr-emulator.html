@@ -6,15 +6,16 @@
 </head>
 
 <body>
-	<suica fullWindow onTime="loop" vr>
-		<cube id="a">
-	</suica>
+	<suica fullWindow vr></suica>
 	
 	<script>
-		function loop( t )
-		{	
-			a.spinH = 30*t;
-			a.spinV = 15*t;
+		var color = ['linen','peachpuff','lightsalmon', 'dimgray'];
+		
+		for( x = -4; x<=4; x++ )
+		for( y = -4; y<=4; y++ )
+		for( z = -4; z<=4; z++ )
+		{
+			cube( [x,y,z], [0.9,0.9,0.9], random( color ) );
 		}
 	</script>
 	
