@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<script src="suica.js"></script>
+</head>
+
+<body>
+	<suica fullWindow orthographic onTime="loop" background="gray">
+		<group id="eye" size="5" hidden>
+			<sphere size="30" color="white" spinV="90">
+			<sphere z="10" size="18,11,18" color="brown" spinV="90">
+			<sphere z="15" size="7,3,7" color="black" spinV="90">
+		</group>
+		<circle id="fly" size="30" color="1,0.8,0">
+		<lookAt center="0,0,9000">
+	</suica>
+	
+	<script>
+		var data = {
+			eyes: 2,
+			fly_z: 3000,
+		};
+
+		var eyes = [];
+		for( var y = -45-15; y<=75; y+=40 )
+		for( var x = -120-75 + 30*(((y+400)/40)%2); x<=180; x+=60 )
+		{
+			var e = eye.clone;
+			e.visible = true;
+			e.center = [5*x,5*y,-5*110];
+			eyes.push( e );
+		}
+		
+		suica0.camera.far = 10000;
+		suica0.camera.near = 0;
+		suica0.camera.updateProjectionMatrix();
+		
+		function loop( t )
+		{	
+			
+			var k = 200;
+			if (data.fly_z < 40) k = 15;
+			if (data.fly_z < 0) k = 150;
+
+			if (data.fly_z > -500)
+			{
+				fly.x = 2*k*Math.sin(3*t+Math.cos(2*t));
+				fly.y =	k*Math.cos(Math.PI*t+Math.sin(3*t));
+				fly.z = data.fly_z;
+			}
+			else
+			{
+				fly.x = 0;
+				fly.z =	200+600*Math.cos(2*t);
+				fly.y = -250-fly.z/3;
+			}
+			
+			for( var e of eyes ) e.threejs.lookAt( fly.x, fly.y, fly.z );
+			
+			for( var e of eyes )
+				e.visible = data.eyes == 4;
+				
+			eyes[9].visible = data.eyes != 1;
+			eyes[10].visible = data.eyes != 1;
+			eyes[16].visible = data.eyes != 2;
+		}
+	</script>
+
+	<script type="module">
+		import * as lil from "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/libs/lil-gui.module.min.js";
+
+		var gui = new lil.GUI( {title:'Контролен панел', width:200});
+
+		gui.add(data, 'eyes', {
+			'Циклоп': 1,
+			'Човек': 2,
+			'Шива': 3,
+			'Додомеки': 4,
+			}).name('Брой очи');
+		gui.add(data, 'fly_z', {
+			'Далече': 3000,
+			'Близо': 200,
+			'Много близо': -200,
+			'Напред-назад': -1000
+		}).name('Разстояние');
+
+			
+	</script>
+	
+</body>

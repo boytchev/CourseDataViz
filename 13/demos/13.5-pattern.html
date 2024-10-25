@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<script src="suica.js"></script>
+</head>
+
+<body>
+	<suica fullWindow>
+		<orbit id="o" distance="60">
+		<cube id="a" y="5" size="20">
+		<cube id="a1" x="-30" y="-1.67" size="20/3">
+		<cube id="a2" x="30" y="-1.67" size="20/3">
+		<cube id="a3" z="-30" y="-1.67" size="20/3">
+		<cube id="a4" z="30" y="-1.67" size="20/3">
+		<circle id="b" y="-5" size="500" spinV="90">
+	</suica>
+	
+	<script>
+		m = new THREE.MeshBasicMaterial({color:new THREE.Color(1.3,1.1,1)});
+		
+		i = "https://boytchev.github.io/suica/assets/textures/blobs.jpg";
+		
+		o.minPolarAngle = 1.2;
+		o.maxPolarAngle = 1.2;
+
+		a.threejs.material = m.clone();
+		a.image = i;
+		a.images = 3;
+
+		a1.threejs.material = m.clone();
+		a1.image = i;
+		a1.images = 1;
+
+		a2.threejs.material = m.clone();
+		a2.image = i;
+		a2.images = 1;
+
+		a3.threejs.material = m.clone();
+		a3.image = i;
+		a3.images = 1;
+
+		a4.threejs.material = m.clone();
+		a4.image = i;
+		a4.images = 1;
+
+		b.threejs.material = m.clone();
+		b.image = i;
+		b.images = 75;
+	</script>
+</body>

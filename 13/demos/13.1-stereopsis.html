@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<script src="suica.js"></script>
+</head>
+
+<body>
+	<suica fullWindow onTime="loop">
+		<cube center="-45,0,-60" color="crimson">
+		<cube center="45,0,-60" color="crimson">
+		<cube center="0,0,0" color="royalblue">
+		<square y="-15" size="210,210" spinV="90" color="1.5,1.5,1.5" image="https://boytchev.github.io/suica/assets/textures/grid.png" images="14">
+	</suica>
+	
+	<script>
+		function loop( t )
+		{	
+			x = 40*Math.sin(t);
+			
+			if( x>20) x = 20;
+			if( x<-20) x = -20;
+			
+			lookAt( [x, 5, 100] );
+		}
+	</script>
+</body>

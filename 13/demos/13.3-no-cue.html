@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<script src="suica.js"></script>
+</head>
+
+<body>
+	<suica fullWindow onTime="loop" orthographic>
+		<group id="a" size="10">
+			<sphere y="25" size="10" color="black">
+			<sphere y="19" size="10,2,10" color="black">
+			<cone size="12,25" color="black">
+			<cone size="20,10" color="black">
+		</group>
+		<clone id="b" src="a">
+	</suica>
+	
+	<script>
+		function loop( t )
+		{	
+			a.center = [400*Math.cos(t), -100, 50*Math.sin(t)];
+			t += Math.PI;
+			b.center = [400*Math.cos(t), -100, 50*Math.sin(t)];
+		}
+	</script>
+	
+</body>

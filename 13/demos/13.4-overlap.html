@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<script src="suica.js"></script>
+</head>
+
+<body>
+	<suica fullWindow onTime="loop" orthographic>
+		<group id="pawnModel" size="5,5,0.1" z="1000">
+			<sphere y="25" size="10">
+			<sphere y="19" size="10,2,10">
+			<cone size="12,25">
+			<cone size="20,10">
+		</group>
+	</suica>
+	
+	<script>
+		var n = 30;
+		var pawns = [];
+		for( var i=0; i<n; i++ )
+		{
+			var pawn = pawnModel.clone;
+			var mat = new THREE.MeshBasicMaterial();
+			for( var e of pawn.groupElements) e.threejs.material = mat;
+			pawn.color = hsl(random(0,360),100,random(20,60));
+			var r = random(1,10);
+			pawn.size = [r,r,0];
+			pawn.ofs = random(0,2*Math.PI);
+			pawn.rad = random(10,20);
+			pawns.push(pawn);
+		}
+		
+		function loop( t )
+		{	
+			for( var i=0; i<n; i++ )
+			{
+				var a = t/3 + pawns[i].ofs,
+					r = pawns[i].rad;
+				pawns[i].center = [20*r*Math.cos(a), -100, r*Math.sin(a)];
+			}
+		}
+	</script>
+	
+</body>
