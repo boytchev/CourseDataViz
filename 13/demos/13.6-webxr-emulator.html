@@ -9,7 +9,10 @@
 	<suica fullWindow vr></suica>
 	
 	<script>
-		lookAt( [1,1,3] );
+		suica0.camera.near = 0.01;
+		suica0.camera.far = 100;
+		suica0.camera.updateProjectionMatrix();
+				
 		var color = ['linen','peachpuff','lightsalmon', 'dimgray'];
 		
 		for( x = -4; x<=4; x++ )
@@ -17,8 +20,9 @@
 		for( z = -4; z<=4; z++ )
 			if( x**2==16 || y**2==16 || z**2==16 )
 			{
-				cube( [x/10,y/10,1.8+z/10], [0.1,0.1,0.1], random( color ) );
+				cube( [x/10,y/10+1.7,z/10-2], [0.1,0.1,0.1], random( color ) );
 			}
+			
 	</script>
 	
 </body>
