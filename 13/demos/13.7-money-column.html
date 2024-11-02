@@ -22,26 +22,18 @@
 		<!-- "Racer Girl" (https://skfb.ly/o7NS9) by Peter_D is
 			 licensed under Creative Commons Attribution
 			 (http://creativecommons.org/licenses/by/4.0/). -->
-		<model id="racer" z="-2.5" src="racer_girl.glb" onload="loaded">
+		<model z="-2.5" src="racer_girl.glb" size="1.7/4.735">
 	</suica>
 	
 	<script>
-		function loaded( a )
-		{	
-			racer.threejs.scale.setScalar( 1.7/4.735 );
-			racer.threejs.traverse( child => {
-				if( child.material )
-				{
-					child.material.roughness = 0;
-					child.material.color.setRGB(1.5,3,3);
-				}
-			} );
-		}
 	
 		// по-голям диапазон на камерата
 		suica0.camera.near = 0.01;
 		suica0.camera.far = 1000;
 		suica0.camera.updateProjectionMatrix();
+
+		suica0.light.intensity = 0.1;
+		suica0.scene.add( new THREE.AmbientLight('white', 1.2) );
 		
 		// мъгла
 		suica0.scene.fog = new THREE.FogExp2( 'linen', 0.03 );
@@ -58,7 +50,7 @@
 			n = Math.max( n, 10 );
 					
 			var label = drawing( 512, 64 );
-			fillText( nx, 10, name, 'black', '60px Arial' );
+			fillText( nx, 12, name, 'black', '60px Arial' );
 			
 			square( [x,0.01,0.1-2], [0.8, 0.1], 'white' );
 			its.spinV = -90;
