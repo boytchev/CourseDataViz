@@ -18,9 +18,26 @@
 		
 		<!-- земя -->
 		<square id="ground" size="100" color="white" image="grid" images="100" spinV="-90">
+		
+		<!-- "Racer Girl" (https://skfb.ly/o7NS9) by Peter_D is
+			 licensed under Creative Commons Attribution
+			 (http://creativecommons.org/licenses/by/4.0/). -->
+		<model id="racer" z="-2.5" src="racer_girl.glb" onload="loaded">
 	</suica>
 	
 	<script>
+		function loaded( a )
+		{	
+			racer.threejs.scale.setScalar( 1.7/4.735 );
+			racer.threejs.traverse( child => {
+				if( child.material )
+				{
+					child.material.roughness = 0;
+					child.material.color.setRGB(1.5,3,3);
+				}
+			} );
+		}
+	
 		// по-голям диапазон на камерата
 		suica0.camera.near = 0.01;
 		suica0.camera.far = 1000;
