@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<script src="suica.js"></script>
+</head>
+
+<body>
+	<suica fullWindow vr background="linen">
+		<lookAt from="0,1.7,4" to="0,0.5,0">
+			
+		<!-- мрежа на земята -->
+		<drawing id="grid" size="512,512" color="white">
+			<moveTo point="0,0,512,0,512,512,0,512,0,0">
+			<stroke color="black">
+			<fillText point="200,236" text="1x1 м" color="lightgray" font="40px Arial">
+		</drawing>
+		
+		<!-- земя -->
+		<square id="ground" size="100" color="white" image="grid" images="100" spinV="-90">
+	</suica>
+	
+	<script>
+		// по-голям диапазон на камерата
+		suica0.camera.near = 0.01;
+		suica0.camera.far = 1000;
+		suica0.camera.updateProjectionMatrix();
+		
+		// мъгла
+		suica0.scene.fog = new THREE.FogExp2( 'linen', 0.03 );
+
+		// настройка на цвета на земята
+		ground.threejs.material = new THREE.MeshBasicMaterial();
+		ground.image = grid;
+		ground.threejs.material.side = THREE.FrontSide;
+		ground.threejs.renderOrder = -1;
+
+		function moneyColumn( x, n, name, nx )
+		{
+			n = Math.min( n, 2e6 );
+			n = Math.max( n, 10 );
+					
+			var label = drawing( 512, 64 );
+			fillText( nx, 10, name, 'black', '60px Arial' );
+			
+			square( [x,0.01,0.1-2], [0.8, 0.1], 'white' );
+			its.spinV = -90;
+			its.image = label;
+
+			var lev = drawing( 64, 32, 'peru' );
+			moveTo( 0, 0, 64, 0, 64, 32, 0, 32, 0, 0 );
+			stroke( 'black', 2 );	
+			
+			var column = cube( [x,0,-0.1-2], [0.105,0.00011*n,0.054] );
+			its.y = its.height/2;
+			its.image = lev;
+			its.images = [1,n/100];
+
+			var lev2 = drawing( 64, 32, 'peru' );
+			moveTo( 0, 0, 64, 0, 64, 32, 0, 32, 0, 0 );
+			stroke( 'black', 2 );	
+			
+			var top = square( [x,column.height+0.001,-0.1-2], [0.105,0.054] );
+			its.spinV = -90;
+			its.image = lev2;
+
+			x++;
+		}
+		
+		moneyColumn( -1.5, 1, '1 лев', 165,  );
+		moneyColumn( -0.5, 1e3, '1000 левa', 100,  );
+		moneyColumn(  0.5, 1e6, '1 млн. левa', 100,  );
+		moneyColumn(  1.5, 1e9, '1 млрд. левa', 80,  );
+
+	</script>
+	
+</body>
