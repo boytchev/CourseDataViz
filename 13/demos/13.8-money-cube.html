@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<script src="suica.js"></script>
+</head>
+
+<body>
+	<suica fullWindow vr background="linen">
+		<lookAt from="0,0,4" to="0,0,0">
+			
+		<!-- мрежа на земята -->
+		<drawing id="grid" size="512,512" color="white">
+			<moveTo point="0,0,512,0,512,512,0,512,0,0">
+			<stroke color="black">
+			<fillText point="200,236" text="1x1 м" color="lightgray" font="40px Arial">
+		</drawing>
+		
+		<!-- земя -->
+		<square id="ground" size="100" color="white" image="grid" images="100" spinV="-90">
+		
+		<!-- "Racer Girl" (https://skfb.ly/o7NS9) by Peter_D is
+			 licensed under Creative Commons Attribution
+			 (http://creativecommons.org/licenses/by/4.0/). -->
+		<model x="-1" z="-2.1" src="racer_girl.glb" size="1.7/4.735">
+	</suica>
+	
+	<script>
+		// по-голям диапазон на камерата
+		suica0.camera.near = 0.01;
+		suica0.camera.far = 1000;
+		suica0.camera.updateProjectionMatrix();
+
+		suica0.light.intensity = 1;
+		
+		// мъгла
+		suica0.scene.fog = new THREE.FogExp2( 'linen', 0.04 );
+
+		// настройка на цвета на земята
+		ground.threejs.material = new THREE.MeshBasicMaterial({depthWrite:false});
+		ground.image = grid;
+		ground.threejs.material.side = THREE.FrontSide;
+		ground.threejs.renderOrder = -10;
+
+		function moneyCube( x, cx, cy, cz, name, nx, cubeSize, lx )
+		{
+			n = Math.min( cy, 2e6 );
+			n = Math.max( n, 10 );
+					
+			var label = drawing( 512, 64 );
+			fillText( nx, 12, name, 'black', '60px Arial' );
+			
+			square( [x+lx,0.01,0.1-2], [0.8, 0.1], 'white' );
+			its.spinV = -90;
+			its.image = label;
+
+			var lev = drawing( 64, 32, 'peru' );
+			moveTo( 0, 0, 64, 0, 64, 32, 0, 32, 0, 0 );
+			stroke( 'black', 2 );	
+			
+			cube( [x,cubeSize/2,-2.1-cubeSize/2], cubeSize, 'black' );
+			its.threejs.material.transparent = true;
+			its.threejs.material.opacity = 0.3;
+			its.wireframe = true;
+			
+			cube( [x,cubeSize/2,-2.1-cubeSize/2], cubeSize );
+			its.threejs.material = new THREE.MeshNormalMaterial({transparent:true,opacity:0.3,side:THREE.DoubleSide,depthWrite:false});
+			its.threejs.renderOrder = -1;
+			
+			var sx = 0.105*cx,
+				sy = 0.00011*cy,
+				sz = 0.054*cz;
+				
+			square( [x,sy/2,-2.1-cubeSize/2+sz/2], [sx,sy] );
+			its.image = lev;
+			its.images = [cx,n/100];
+
+			square( [x-sx/2,sy/2,-2.1-cubeSize/2], [sz,sy] );
+			its.spinH = 90;
+			its.image = lev;
+			its.images = [cz,n/100];
+			
+			square( [x+sx/2,sy/2,-2.1-cubeSize/2], [sz,sy] );
+			its.spinH = -90;
+			its.image = lev;
+			its.images = [cz,n/100];
+			
+			square( [x,sy,-2.1-cubeSize/2], [sx,sz] );
+			its.spinV = -90;
+			its.image = lev;
+			its.images = [cx,cz];
+		}
+		
+		moneyCube( -2.5, 1, 1, 1, '1 лев', 165, 0.1, 0 );
+		moneyCube( -1.5, 1, 500, 2, '1000 левa', 100, 0.1, 0  );
+		moneyCube(  0, 8, 7813, 16, '1 млн. левa', 100, 1, 0 );
+		moneyCube(  6, 81, 78138, 158, '1 млрд. левa', 80, 10, -3.5 );
+
+	</script>
+	
+</body>
