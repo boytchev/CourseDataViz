@@ -1,19 +1,8 @@
 # CourseDataViz
 Supplementary materials for "Data Visualization" course
 
-### 1
 
-### 2
-
-### 3
-
-### 4
-
-### 5
-
-### 7
-
-### 13
+### Topic 13
 
 * [7-money-column-vr](13/demos/13.7-money-column-vr.html)
 * [7-money-column-orbit](13/demos/13.7-money-column-orbit.html)
