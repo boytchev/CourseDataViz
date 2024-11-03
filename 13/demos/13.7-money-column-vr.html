@@ -32,11 +32,10 @@
 		suica0.camera.far = 1000;
 		suica0.camera.updateProjectionMatrix();
 
-		suica0.light.intensity = 0.1;
-		suica0.scene.add( new THREE.AmbientLight('white', 1.2) );
+		suica0.light.intensity = 1;
 		
 		// мъгла
-		suica0.scene.fog = new THREE.FogExp2( 'linen', 0.03 );
+		suica0.scene.fog = new THREE.FogExp2( 'linen', 0.04 );
 
 		// настройка на цвета на земята
 		ground.threejs.material = new THREE.MeshBasicMaterial();
