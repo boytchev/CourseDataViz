@@ -37,10 +37,6 @@
 				var color = Math.min(240,Math.max(0,300-270*y));
 				cube( [x,y/2,z], [0.2,y,0.017*radius], hsl(color,100,70-10*year) );
 				its.spinH = -360*day/days;
-				
-				its.clone;
-				its.wireframe = true;
-				its.color = hsl(color,100,35-5*year);
 			}
 		}
 	</script>
