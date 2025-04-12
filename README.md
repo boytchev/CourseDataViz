@@ -2,7 +2,14 @@
 Supplementary materials for "Data Visualization" course
 
 
-### Topic 13
+### 11
+
+* [1-GPS-Coordinates](11/demos/11.1-GPS-Coordinates.html)
+* [2-GPS-Coordinates-accuracy](11/demos/11.2-GPS-Coordinates-accuracy.html)
+* [3-Geographical-map](11/demos/11.3-Geographical-map.html)
+
+
+### 13
 
 * [7-money-column-vr](13/demos/13.7-money-column-vr.html)
 * [7-money-column-orbit](13/demos/13.7-money-column-orbit.html)
