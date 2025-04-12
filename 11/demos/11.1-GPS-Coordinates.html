@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>11.1: GPS координати</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>body {font-size:200%;} button {font-size:100%;}</style>
+	</head>
+	
+	<body>
+		<button onclick="getLocation()">Мои координати</button>
+		<hr>
+		<div id="result" style="boder:solid 1px black"></div>
+
+		<script>
+			var result = document.getElementById('result');
+		
+			// функция, която поисква геолокацията
+			function getLocation()
+			{
+				// има ли я тази функционалност
+				if (navigator.geolocation)
+				{
+					navigator.geolocation.getCurrentPosition(geoSuccess);
+				}
+			}
+
+			// функция, която показва данните от геолокационен обект
+			function geoSuccess(position)
+			{
+				result.innerHTML = '<br>' + 'Географска ширина: ' + position.coords.latitude + '<br>' + 'Географска дължина: ' + position.coords.longitude;
+			}
+		</script>
+	</body>
+</html>
+
+
