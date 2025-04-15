@@ -10,10 +10,17 @@ Supplementary materials for "Data Visualization" course
 * [3-Bar-chart-2](11/demos/11.3-Bar-chart-2.html)
 * [4-Pie-chart-1](11/demos/11.4-Pie-chart-1.html)
 * [4-Pie-chart-2](11/demos/11.4-Pie-chart-2.html)
+* [5-Radar-chart](11/demos/11.5-Radar-chart.html)
+* [6-Network-chart-1](11/demos/11.6-Network-chart-1.html)
+* [6-Network-chart-2](11/demos/11.6-Network-chart-2.html)
+* [6-Network-chart-3](11/demos/11.6-Network-chart-3.html)
+* [6-Network-chart-4](11/demos/11.6-Network-chart-4.html)
 * [7-GPS-Coordinates](11/demos/11.7-GPS-Coordinates.html)
 * [8-GPS-Coordinates-accuracy](11/demos/11.7-GPS-Coordinates-accuracy.html)
 * [9-Geographical-map](11/demos/11.9-Geographical-map.html)
 * [10-Device-orientation](11/demos/11.10-Device-orientation.html)
+
+* [13-Accelometer-noise](11/demos/11.13-Accelometer-noise.html)
 
 
 ### 13

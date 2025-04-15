@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+<body>
+	<canvas id='chart' width="600" height="600" style="border: solid 1px black;"></canvas>
+	
+	<script>
+	
+		canvas = document.getElementById('chart');
+		graph = canvas.getContext("2d");
+		
+		h = canvas.clientWidth;
+		v = canvas.clientHeight;
+		g = 15;
+		r = Math.min(h,v)/2-g;
+		n = 21;
+		x = [],
+		y = [];
+		
+		// генериране на координатите на n категории
+		for (var i=0; i<n; i++)
+		{
+			a = i/n*2*Math.PI;
+			x[i] = h/2+r*Math.cos(a);
+			y[i] = v/2+r*Math.sin(a);
+		}
+		
+		// рисуване на категориите
+		graph.fillStyle = 'cornflowerblue'; 
+		for (var i=0; i<n; i++)
+		{
+			graph.beginPath();
+			graph.arc(x[i],y[i],10,0,2*Math.PI);
+			graph.fill();
+		}
+		
+		// рисуване на случайни връзки
+		graph.strokeStyle = 'cornflowerblue'; 
+		for (k=0; k<2*n; k++)
+		{
+			i = Math.floor(n*Math.random());
+			j = Math.floor(n*Math.random());
+			
+			graph.beginPath();
+			graph.moveTo(x[i],y[i]);	
+			graph.lineTo(x[j],y[j]);
+			graph.stroke();
+		}
+		
+	</script>
+	
+</body>
+</html>
