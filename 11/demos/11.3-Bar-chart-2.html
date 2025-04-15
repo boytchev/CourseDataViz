@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+<body>
+	<canvas id='chart' width="600" height="300" style="border: solid 1px black;"></canvas>
+	
+	<script>
+	
+		canvas = document.getElementById('chart');
+		graph = canvas.getContext("2d");
+		graph.fillStyle = 'cornflowerblue'; 
+		
+		h = canvas.clientWidth;
+		v = canvas.clientHeight;
+		g = 1;
+		d = [];
+		for (var x=0; x<100; x++)
+			d.push( 50+20*Math.sin(x/5)+10*Math.sin(x/3) );
+		n = d.length;
+		
+		function bar(i)
+		{
+			dx = (h-(n+1)*g)/n;
+			dy = d[i]/100 * (v-2*g);
+			
+			x = (i+1)*g+i*dx;
+			y = v-g;
+			
+			graph.fillRect(x,y,dx,-dy);
+		}
+		
+		for (var i=0; i<n; i++)
+			bar(i);
+		
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html>
+<body>
+	<canvas id='chart' width="450" height="300" style="border: solid 1px black;"></canvas>
+	
+	<script>
+	
+		canvas = document.getElementById('chart');
+		graph = canvas.getContext("2d");
+		graph.fillStyle = 'cornflowerblue'; 
+		
+		h = canvas.clientWidth;
+		v = canvas.clientHeight;
+		g = 5;
+		d = [31,41,59,26,53,58,97,93,23,84,62,64,33,83,27,95,2,88,41,97,16];
+		n = d.length;
+				
+		function bar(i)
+		{
+			dx = (h-(n+1)*g)/n;
+			dy = d[i]/100 * (v-2*g);
+			
+			x = (i+1)*g+i*dx;
+			y = v-g;
+			
+			graph.fillRect(x,y,dx,-dy);
+		}
+		
+		for (var i=0; i<n; i++)
+			bar(i);
+		
+	</script>
+	
+</body>
+</html>

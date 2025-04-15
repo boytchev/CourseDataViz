@@ -4,9 +4,16 @@ Supplementary materials for "Data Visualization" course
 
 ### 11
 
-* [1-GPS-Coordinates](11/demos/11.1-GPS-Coordinates.html)
-* [2-GPS-Coordinates-accuracy](11/demos/11.2-GPS-Coordinates-accuracy.html)
-* [3-Geographical-map](11/demos/11.3-Geographical-map.html)
+* [1-Image](11/demos/11.1-Image.html)
+* [2-Google-Sheets](11/demos/11.2-Google-Sheets.html)
+* [3-Bar-chart-1](11/demos/11.3-Bar-chart-1.html)
+* [3-Bar-chart-2](11/demos/11.3-Bar-chart-2.html)
+* [4-Pie-chart-1](11/demos/11.4-Pie-chart-1.html)
+* [4-Pie-chart-2](11/demos/11.4-Pie-chart-2.html)
+* [7-GPS-Coordinates](11/demos/11.7-GPS-Coordinates.html)
+* [8-GPS-Coordinates-accuracy](11/demos/11.7-GPS-Coordinates-accuracy.html)
+* [9-Geographical-map](11/demos/11.9-Geographical-map.html)
+* [10-Device-orientation](11/demos/11.10-Device-orientation.html)
 
 
 ### 13

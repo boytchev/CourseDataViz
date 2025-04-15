@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<html>
+<body>
+	<canvas id='chart' width="600" height="400" style="border: solid 1px black;"></canvas>
+	
+	<script>
+	
+		canvas = document.getElementById('chart');
+		graph = canvas.getContext("2d");
+		graph.fillStyle = 'cornflowerblue'; 
+		
+		h = canvas.clientWidth;
+		v = canvas.clientHeight;
+		g = 15;
+		d = [3,1,4,1,5,9,2,6];
+		n = d.length;
+		
+		s = [0];
+		for (var i=1; i<n+1; i++)
+			s[i] = s[i-1]+d[i-1];
+
+		function pie(i)
+		{
+			x = h/2;
+			y = v/2;
+			r = Math.min(x,y)-g;
+			
+			ai = 2*Math.PI*s[i]/s[n] - Math.PI/2;
+			aj = 2*Math.PI*s[i+1]/s[n] - Math.PI/2;
+
+			graph.fillStyle = ['violet','lightskyblue','gold','lightsalmon','mediumpurple','palegreen','gray','cornsilk'][i%8];
+			graph.strokeStyle = 'white';
+			graph.beginPath();
+			graph.moveTo(x,y);
+			graph.arc(x,y,r,ai,aj);
+			graph.fill();
+			graph.stroke();
+		}
+		
+		for (var i=0; i<n; i++)
+			pie(i);
+		
+	</script>
+	
+</body>
+</html>
