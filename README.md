@@ -15,6 +15,8 @@ Supplementary materials for "Data Visualization" course
 * [6-Network-chart-2](11/demos/11.6-Network-chart-2.html)
 * [6-Network-chart-3](11/demos/11.6-Network-chart-3.html)
 * [6-Network-chart-4](11/demos/11.6-Network-chart-4.html)
+* [13-Heat-map-1](11/demos/11.13-Heat-map-1.html)
+* [13-Heat-map-2](11/demos/11.13-Heat-map-2.html)
 * [7-GPS-Coordinates](11/demos/11.7-GPS-Coordinates.html)
 * [8-GPS-Coordinates-accuracy](11/demos/11.8-GPS-Coordinates-accuracy.html)
 * [9-Geographical-map](11/demos/11.9-Geographical-map.html)

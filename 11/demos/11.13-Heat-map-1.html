@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html>
+<body>
+	<canvas id='chart' width="600" height="400" style="border: solid 1px black;"></canvas>
+	
+	<script>
+	
+		canvas = document.getElementById('chart');
+		graph = canvas.getContext("2d");
+		graph.fillStyle = 'cornflowerblue'; 
+		graph.globalAlpha = 0.5;
+		
+		n = 300;
+
+		for (var i=0; i<n; i++)
+		{
+			x = 700*Math.random()-50;
+			y = 500*Math.random()-50;
+			d = 50*Math.random()*Math.random();
+			
+			graph.beginPath();
+			graph.arc(x,y,d,0,2*Math.PI);
+			graph.fill();
+		}
+		
+	</script>
+	
+</body>
+</html>
