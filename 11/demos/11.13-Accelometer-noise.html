@@ -24,7 +24,7 @@
 			import * as THREE from "three";
 			import * as VAX from "vax";
 
-			VAX.init();
+			VAX.init( animate );
 			
 			var O = new THREE.Vector3(0, 0, 0);
 
@@ -46,14 +46,14 @@
 						}, 2000);
 
 			// точки
-			var n = 100,
+			var n = 1000,
 				k = 80, // мащаб
 				data = [];
 
 			// функция, която показва данните на движението
 			function deviceMotion(event)
 			{
-				if (n > 0)
+				if (n > 0 && n%30)
 				{
 					data.push(k*event.acceleration.x, k*event.acceleration.y, k*event.acceleration.z);
 					n--;
@@ -66,6 +66,7 @@
 					var material = new THREE.PointsMaterial({color: 'black', size: 3});
 					var points = new THREE.Points(geometry, material);
 					VAX.scene.add(points);
+					data = [];
 
 					n--;
 				}
