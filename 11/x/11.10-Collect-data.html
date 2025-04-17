@@ -7,37 +7,36 @@
 	
 <body>
 	<suica fullWindow orthographic background="white">
-		<square y="300" size="3000,2" color="black">
-		<square y="250" size="3000,1" color="lightgray">
-		<square y="200" size="3000,2" color="black">
+		<square y="180" size="3000,2" color="black">
 		<square y="150" size="3000,1" color="lightgray">
-		<square y="100" size="3000,2" color="black">
-		<square y="50" size="3000,1" color="lightgray">
+		<square y="120" size="3000,2" color="black">
+		<square y="90" size="3000,1" color="lightgray">
+		<square y="60" size="3000,2" color="black">
+		<square y="30" size="3000,1" color="lightgray">
 		<square y="0" size="3000,4" color="black">
-		<square y="-50" size="3000,1" color="lightgray">
-		<square y="-100" size="3000,2" color="black">
+		<square y="-30" size="3000,1" color="lightgray">
+		<square y="-60" size="3000,2" color="black">
+		<square y="-90" size="3000,1" color="lightgray">
+		<square y="-120" size="3000,2" color="black">
 		<square y="-150" size="3000,1" color="lightgray">
-		<square y="-200" size="3000,2" color="black">
-		<square y="-250" size="3000,1" color="lightgray">
-		<square y="-300" size="3000,2" color="black">
+		<square y="-180" size="3000,2" color="black">
 	</suica>
 
 	<script>
-		x = -700;
+		x = -600;
 		y = 0;
 		
-		line( [x,y,0], [x+1,100,0], 'red' );
-		
+	
 		// слушаме за събитието на движението на устройство
 		window.addEventListener("devicemotion", deviceMotion, true);
 
 		// функция, която рисува червена отсечка
 		function deviceMotion(event)
 		{
-			line( [x,y,0], [x+1,100*event.acceleration.z,0], 'red' );
+			line( [x,y,0], [x+1,60*event.acceleration.z,0], 'red' );
 			
 			x = x+1;
-			y = 100*event.acceleration.z;
+			y = 60*event.acceleration.z;
 		}
 	</script>
 </body>
