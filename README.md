@@ -26,7 +26,9 @@ Supplementary materials for "Data Visualization" course
 
 ### 11U
 
-* [9-Virtual-compass.html](11/x/11.9-Virtual-compass.html)
+* [9-Virtual-compass](11/x/11.9-Virtual-compass.html)
+* [10-Collect-data](11/x/11.10-Collect-data.html)
+* [10-Count-steps](11/x/11.10-Count-steps.html)
 
 ### 13
 

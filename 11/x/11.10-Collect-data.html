@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<script src="suica.js"></script>
+</head>
+	
+<body>
+	<suica fullWindow orthographic background="white">
+		<square y="300" size="3000,2" color="black">
+		<square y="250" size="3000,1" color="lightgray">
+		<square y="200" size="3000,2" color="black">
+		<square y="150" size="3000,1" color="lightgray">
+		<square y="100" size="3000,2" color="black">
+		<square y="50" size="3000,1" color="lightgray">
+		<square y="0" size="3000,4" color="black">
+		<square y="-50" size="3000,1" color="lightgray">
+		<square y="-100" size="3000,2" color="black">
+		<square y="-150" size="3000,1" color="lightgray">
+		<square y="-200" size="3000,2" color="black">
+		<square y="-250" size="3000,1" color="lightgray">
+		<square y="-300" size="3000,2" color="black">
+	</suica>
+
+	<script>
+		x = -600;
+		y = 0;
+		dx = 1;
+		
+		// слушаме за събитието на движението на устройство
+		window.addEventListener("devicemotion", deviceMotion, true);
+
+		// функция, която рисува червена отсечка
+		function deviceMotion(event)
+		{
+			segment( [x,y], [x+dx, event.acceleration.z], 'red' );
+			
+			x = x+dx;
+			y = event.acceleration.z;
+		}
+	</script>
+</body>
+
+
