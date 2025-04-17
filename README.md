@@ -24,6 +24,7 @@ Supplementary materials for "Data Visualization" course
 * [12-Device-motion](11/demos/11.12-Device-motion.html)
 * [13-Accelometer-noise](11/demos/11.13-Accelometer-noise.html)
 
+* [9-Virtual-compass.html](11/x/11.9-Virtual-compass.html)
 
 ### 13
 
