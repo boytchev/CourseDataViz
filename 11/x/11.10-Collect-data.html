@@ -23,7 +23,7 @@
 	</suica>
 
 	<script>
-		x = -600;
+		x = -100;
 		y = 0;
 		dx = 1;
 		
@@ -33,7 +33,7 @@
 		// функция, която рисува червена отсечка
 		function deviceMotion(event)
 		{
-			segment( [x,y], [x+dx, event.acceleration.z], 'red' );
+			segment( [x,y,0], [x+dx, 100*event.acceleration.z, 0], 'red' );
 			
 			x = x+dx;
 			y = event.acceleration.z;
