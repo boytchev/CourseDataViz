@@ -2,10 +2,10 @@
 
 <html>
 	<head>
-		<title>11.7: GPS координати</title>
+		<title>11.8: Точност на GPS координати</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<style>body {font-size:200%;} button {font-size:100%;}</style>
+		<style>body {font-size:175%;} button {font-size:100%;}</style>
 	</head>
 	
 	<body>
@@ -29,7 +29,10 @@
 			// функция, която показва данните от геолокационен обект
 			function geoSuccess(position)
 			{
-				result.innerHTML = '<br>' + 'Географска ширина: ' + position.coords.latitude + '<br>' + 'Географска дължина: ' + position.coords.longitude;
+				result.innerHTML += '<br>Географска ширина: ' + position.coords.latitude;
+				result.innerHTML += '<br>Географска дължина: ' + position.coords.longitude;
+				result.innerHTML += '<br>Вероятност: 95%';
+				result.innerHTML += '<br>Точност: ' + position.coords.accuracy + ' метра';
 			}
 		</script>
 	</body>

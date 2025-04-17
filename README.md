@@ -15,14 +15,14 @@ Supplementary materials for "Data Visualization" course
 * [6-Network-chart-2](11/demos/11.6-Network-chart-2.html)
 * [6-Network-chart-3](11/demos/11.6-Network-chart-3.html)
 * [6-Network-chart-4](11/demos/11.6-Network-chart-4.html)
-* [13-Heat-map-1](11/demos/11.13-Heat-map-1.html)
-* [13-Heat-map-2](11/demos/11.13-Heat-map-2.html)
-* [7-GPS-Coordinates](11/demos/11.7-GPS-Coordinates.html)
-* [8-GPS-Coordinates-accuracy](11/demos/11.8-GPS-Coordinates-accuracy.html)
-* [9-Geographical-map](11/demos/11.9-Geographical-map.html)
-* [10-Device-orientation](11/demos/11.10-Device-orientation.html)
-* [11-Device-motion](11/demos/11.11-Device-motion.html)
-* [12-Accelometer-noise](11/demos/11.12-Accelometer-noise.html)
+* [7-Heat-map-1](11/demos/11.7-Heat-map-1.html)
+* [7-Heat-map-2](11/demos/11.7-Heat-map-2.html)
+* [8-GPS-Coordinates](11/demos/11.8-GPS-Coordinates.html)
+* [9-GPS-Coordinates-accuracy](11/demos/11.9-GPS-Coordinates-accuracy.html)
+* [10-Geographical-map](11/demos/11.10-Geographical-map.html)
+* [11-Device-orientation](11/demos/11.11-Device-orientation.html)
+* [12-Device-motion](11/demos/11.12-Device-motion.html)
+* [13-Accelometer-noise](11/demos/11.13-Accelometer-noise.html)
 
 
 ### 13
