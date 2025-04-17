@@ -23,9 +23,8 @@
 	</suica>
 
 	<script>
-		x = -100;
+		x = -1000;
 		y = 0;
-		dx = 1;
 		
 		// слушаме за събитието на движението на устройство
 		window.addEventListener("devicemotion", deviceMotion, true);
@@ -33,9 +32,9 @@
 		// функция, която рисува червена отсечка
 		function deviceMotion(event)
 		{
-			segment( [x,y,0], [x+dx, 100*event.acceleration.z, 0], 'red' );
+			line( [x,y], [x+1, 100*event.acceleration.z], 'red' );
 			
-			x = x+dx;
+			x = x+1;
 			y = event.acceleration.z;
 		}
 	</script>
